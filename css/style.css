@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* The CSS box-sizing property allows us to include the padding and border in an element's total width and height. */
+}
+body {
+    background-color: #fff;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+}
+
+/* Contenedor principal centrado */
+main, header, nav, footer {
+    max-width: 960px;   /* ancho máximo */
+    margin: 0 auto;     /* centrado horizontal */
+    padding: 20px;      /* espacio interno */
+}
+
+/* Header */
+header {
+    background-color: lightgray;
+    padding: 30px;
+    text-align: center; /* centra el h1 */
+}
+
+header h1 {
+    font-size: 50px;
+    color: #000;
+}
+
+/* Nav */
+nav ul {
+    display: flex; /* mejor que grid para menú horizontal simple */
+    justify-content: center; /* centra los elementos del menu */
+    gap: 20px; /* espacio entre los links */
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li a {
+    font-size: 20px;
+    color: rgb(171, 169, 170);
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: rgb(240, 135, 61);
+}
+
+/* Secciones */
+section {
+    margin-bottom: 40px; /* espacio entre secciones */
+    text-align: center; /* centra texto dentro de cada sección */
+}
+
+/* H2 */
+h2 {
+    font-size: 30px;
+    color: rgb(73, 74, 10);
+    margin-bottom: 20px;
+}
+
+/* Listas dentro de sección centradas */
+ul, ol {
+    display: inline-block; /* para que se centre con text-align */
+    text-align: left; /* mantiene listas alineadas a la izquierda */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Imágenes centradas */
+img {
+    display: block;
+    margin: 10px auto; /* centra horizontalmente */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: lightgray;
+    margin-top: 40px;
+}
