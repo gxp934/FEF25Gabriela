@@ -1,78 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* The CSS box-sizing property allows us to include the padding and border in an element's total width and height. */
+    box-sizing: border-box;
 }
+
 body {
     background-color: #fff;
     font-family: "Montserrat", sans-serif;
     line-height: 1.6;
+    color: #333;
 }
 
-/* Contenedor principal centrado */
+/* Layout containers */
 main, header, nav, footer {
-    max-width: 960px;   /* ancho máximo */
-    margin: 0 auto;     /* centrado horizontal */
-    padding: 20px;      /* espacio interno */
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* Header */
 header {
     background-color: lightgray;
     padding: 30px;
-    text-align: center; /* centra el h1 */
+    text-align: center;
 }
 
 header h1 {
     font-size: 50px;
     color: #000;
+    text-transform: uppercase;
 }
 
-/* Nav */
+/* Navigation */
 nav ul {
-    display: flex; /* mejor que grid para menú horizontal simple */
-    justify-content: center; /* centra los elementos del menu */
-    gap: 20px; /* espacio entre los links */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     list-style: none;
     padding: 0;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 nav ul li a {
-    font-size: 20px;
-    color: rgb(171, 169, 170);
+    font-size: 18px;
+    color: white;
     text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: rgb(240, 135, 61);
+    background: rgb(240, 135, 61);
 }
 
-/* Secciones */
+/* Sections */
 section {
-    margin-bottom: 40px; /* espacio entre secciones */
-    text-align: center; /* centra texto dentro de cada sección */
+    margin-bottom: 40px;
+    text-align: center;
 }
 
-/* H2 */
+/* Headings & Paragraphs */
 h2 {
-    font-size: 30px;
+    font-size: 28px;
     color: rgb(73, 74, 10);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-/* Listas dentro de sección centradas */
-ul, ol {
-    display: inline-block; /* para que se centre con text-align */
-    text-align: left; /* mantiene listas alineadas a la izquierda */
-    margin-top: 10px;
-    margin-bottom: 20px;
+p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.8;
 }
 
-/* Imágenes centradas */
-img {
-    display: block;
-    margin: 10px auto; /* centra horizontalmente */
+/* Container for all crew cards */
+.crew-container {
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    gap: 20px;                 /* space between cards */
+    flex-wrap: wrap;           /* wrap on smaller screens */
+}
+
+/* Each card smaller so they fit side by side */
+.character-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;              /* fixed width so they align nicely */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.crew-img {
+    border-radius: 50%;
+    width: 120px;
+    transition: transform 0.3s ease;
+}
+.crew-img:hover {
+    transform: scale(1.1);
+}
+
+.gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.gallery img {
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -81,4 +127,5 @@ footer {
     padding: 20px;
     background-color: lightgray;
     margin-top: 40px;
+    border-radius: 8px;
 }
