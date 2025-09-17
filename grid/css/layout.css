@@ -3,100 +3,107 @@ body {
     margin: 0;
 }
 
-/* Contenedor principal 2x2 */
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50vh 50vh; /* Se divide en dos filas de 50% de la altura de la ventana */
+    grid-template-rows: 50vh 50vh;
     height: 100vh;
 }
 
-/* Estilos para los contenedores de los diseños de colores (superior izquierda y derecha) */
-.color-design-container {
-    border: 1px solid black;
-    position: relative;
-    overflow: hidden;
-}
 
-.color-box {
-    position: absolute;
-}
-
-/* Estilos para los contenedores de las imágenes (inferior izquierda y derecha) */
+.color-design-container,
 .image-container {
     border: 1px solid black;
     position: relative;
     overflow: hidden;
 }
 
+
+.design-label,
+.photo-label {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 10;
+    color: #333;
+}
+
+
+.color-box {
+    position: absolute;
+}
+
+
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* La imagen cubrirá todo el espacio del contenedor */
+    object-fit: cover;
     display: block;
 }
-
-/* --- Estilos para el diseño de COLORES 1 (contenedor superior izquierda) --- */
 .red-box-1 {
-    width: 50%;
-    height: 50%;
+    width: 45%; 
+    height: 55%; 
     background-color: red;
-    top: 25%;
-    left: 0;
+    top: 20%;
+    left: 5%;
 }
 
 .blue-box-1 {
-    width: 20%;
-    height: 20%;
+    width: 20%; 
+    height: 20%; 
     background-color: blue;
-    left: 20%;
-    bottom: 25%;
+    top: 65%; /* Adjusted to move the square down */
+    left: 15%; 
 }
 
 .yellow-box-1 {
-    width: 30%;
-    height: 30%;
+    width: 35%;
+    height: 35%;
     background-color: yellow;
-    top: 35%;
-    right: 15%;
+    top: 15%;
+    right: 5%;
 }
 
 .black-box-1 {
-    width: 25%;
-    height: 25%;
+    width: 35%;
+    height: 35%;
     background-color: black;
-    bottom: 20%;
-    right: 20%;
+    bottom: 5%;
+    right: 5%;
 }
 
-/* --- Estilos para el diseño de COLORES 2 (contenedor superior derecha) --- */
+
+
 .red-box-2 {
-    width: 40%;
-    height: 40%;
+    width: 50%;
+    height: 70%;
     background-color: red;
-    top: 30%;
-    left: 10%;
+    top: 10%;
+    left: 0;
 }
 
 .blue-box-2 {
-    width: 20%;
-    height: 20%;
+    width: 30%;
+    height: 30%;
     background-color: blue;
-    top: 55%;
-    left: 35%;
+    top: 45%; /* Posición más precisa */
+    left: 25%;
 }
 
 .yellow-box-2 {
-    width: 45%;
-    height: 25%;
+    width: 60%; /* Más ancho */
+    height: 30%;
     background-color: yellow;
-    top: 25%;
-    right: 5%;
+    top: 10%;
+    right: 0;
 }
 
 .black-box-2 {
     width: 60%;
-    height: 30%;
+    height: 40%; /* Más alto */
     background-color: black;
     bottom: 0;
     right: 0;
