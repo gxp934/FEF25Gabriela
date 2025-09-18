@@ -44,58 +44,62 @@ body {
     display: block;
 }
 .red-box-1 {
-    width: 45%; 
+    width: 30%; 
     height: 55%; 
     background-color: red;
-    top: 20%;
-    left: 5%;
+    top: 0;      /* esquina superior */
+    left: 0;     /* esquina izquierda */
 }
 
 .blue-box-1 {
     width: 20%; 
-    height: 20%; 
+    aspect-ratio: 1 / 1; 
     background-color: blue;
-    top: 65%; /* Adjusted to move the square down */
-    left: 15%; 
+    top: 55%; /* para poner espacio desde arriba  */
+    left: 45%; 
+
 }
 
 .yellow-box-1 {
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    aspect-ratio: 1 / 1;
     background-color: yellow;
     top: 15%;
-    right: 5%;
+    right: 10%;
 }
+
+
 
 .black-box-1 {
-    width: 35%;
-    height: 35%;
+    /*margin-left: 440px ;
+    margin-top: 80px;*/
+    position: absolute;        /* para hacer que no se mueava */
+    width: 20%;
+    aspect-ratio: 1 / 1;      /* lo deja cuadrado */
     background-color: black;
-    bottom: 5%;
-    right: 5%;
+    bottom: 20px; /* para hacer crear espacio desde abajo  */
+    right: 0;
 }
 
-
-
 .red-box-2 {
-    width: 50%;
-    height: 70%;
+    width: 30%;
+    height: 60%;
     background-color: red;
     top: 10%;
     left: 0;
 }
 
 .blue-box-2 {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    aspect-ratio: 1 / 1; 
     background-color: blue;
     top: 45%; /* Posición más precisa */
     left: 25%;
 }
 
 .yellow-box-2 {
-    width: 60%; /* Más ancho */
-    height: 30%;
+    width: 40%; /* Más ancho */
+    height: 40%;
     background-color: yellow;
     top: 10%;
     right: 0;
@@ -103,7 +107,7 @@ body {
 
 .black-box-2 {
     width: 60%;
-    height: 40%; /* Más alto */
+    height: 40%; 
     background-color: black;
     bottom: 0;
     right: 0;
