@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     background-color: #fff;
     font-family: "Montserrat", sans-serif;
@@ -35,18 +34,19 @@ header h1 {
 }
 
 a {
-    color: rgb(240, 135, 61);;
+    color: rgb(240, 135, 61);
 }
-/* Navigation */
+
+/* Navigation - Now a flexible grid */
 nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     list-style: none;
     padding: 0;
     background: #222;
     padding: 15px;
     border-radius: 8px;
+    display: grid; /* Use grid for nav */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid for links */
+    gap: 10px;
 }
 
 nav ul li a {
@@ -56,6 +56,8 @@ nav ul li a {
     padding: 8px 15px;
     border-radius: 6px;
     transition: background 0.3s ease;
+    text-align: center;
+    display: block;
 }
 
 nav ul li a:hover {
@@ -81,21 +83,27 @@ p {
     line-height: 1.8;
 }
 
-/* Container for all crew cards */
-.crew-container {
-    display: flex;
-    justify-content: center;   /* center horizontally */
-    gap: 20px;                 /* space between cards */
-    flex-wrap: wrap;           /* wrap on smaller screens */
+
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columns on large screens */
+    gap: 20px;
+    justify-content: center;
 }
 
-/* Each card smaller so they fit side by side */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columns on large screens */
+    gap: 20px;
+    text-align: left; /* Align text to the left within the grid */
+}
+
+/* Crew section */
 .character-card {
     background: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 12px;
     padding: 20px;
-    width: 250px;              /* fixed width so they align nicely */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -109,14 +117,10 @@ p {
     transform: scale(1.1);
 }
 
-.gallery {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+
 .gallery img {
-    width: 200px;
+    width: 100%; /* Make images responsive within their grid cell */
+    max-width: 250px;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     transition: transform 0.3s;
@@ -125,11 +129,42 @@ p {
     transform: scale(1.05);
 }
 
-/* Footer */
+
 footer {
     text-align: center;
     padding: 20px;
     background-color: lightgray;
     margin-top: 40px;
     border-radius: 8px;
+}
+
+/* --- Media Queries for Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    /* Main layout adjustment for smaller screens */
+    nav ul {
+        grid-template-columns: 1fr; /* Stack nav links vertically */
+        gap: 5px;
+    }
+
+    /* Stack all grids into a single column on mobile */
+    .grid-3-col, .grid-2-col {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-text {
+        text-align: center; /* Center the text in the story section on mobile */
+    }
+
+    /* Adjust padding for a better mobile experience */
+    main, header, nav, footer {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
 }

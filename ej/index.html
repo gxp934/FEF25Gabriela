@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js/debug.js" defer> </script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/click.js" defer> </script>
+
 </head>
 <body>
-    <h1> debugging and setup</h1>
+    <h1 id="heading1"></h1>
+    <div id="redClick">
+        <p>Click me !</p>
+    </div>
+    <section>
+        <h2>Show Hide Box</h2>
+        <button class="buttonStyle" id="show">Show</button>
+        <button class="buttonStyle" id="hide">Hide</button>
+        <button class="buttonStyle" id="toggle">Toggle</button>
+        <div class="showHideContainer hide" id="showHideBox">
+            <p>This box can be shown or hidden</p>
+        </div>
+    </section>
 </body>
 </html>

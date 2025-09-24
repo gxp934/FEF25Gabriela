@@ -1,0 +1,43 @@
+.clickBox{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    transition: background-color 0.3s ease;
+    }
+
+.buttonStyle{
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 1.0s ease;
+
+}
+
+.buttonStyle:hover {
+    background-color: #45a049;
+    transition: background-color 1.0s ease;
+}
+
+.showHideContainer {
+    width: 300px;
+    height: 150px;
+    background-color: lightgray;
+    margin-top: 10px;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hidden state */
+.showHideContainer.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+}
