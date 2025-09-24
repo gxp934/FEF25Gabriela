@@ -119,7 +119,7 @@ p {
 
 
 .gallery img {
-    width: 100%; /* Make images responsive within their grid cell */
+    width: 100%; 
     max-width: 250px;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
@@ -140,22 +140,22 @@ footer {
 
 /* --- Media Queries for Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    /* Main layout adjustment for smaller screens */
+
     nav ul {
-        grid-template-columns: 1fr; /* Stack nav links vertically */
+        grid-template-columns: 1fr; 
         gap: 5px;
     }
 
-    /* Stack all grids into a single column on mobile */
+
     .grid-3-col, .grid-2-col {
         grid-template-columns: 1fr;
     }
     
     .story-text {
-        text-align: center; /* Center the text in the story section on mobile */
+        text-align: center; 
     }
 
-    /* Adjust padding for a better mobile experience */
+   
     main, header, nav, footer {
         padding: 10px;
     }
