@@ -9,3 +9,4 @@ console.log(message);
 let number = 123; 
 let number2 = 150;
 console.log(number + number2);
+

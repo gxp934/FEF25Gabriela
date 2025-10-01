@@ -167,4 +167,10 @@ footer {
     h2 {
         font-size: 24px;
     }
+    
+    .highlight {
+    border: 3px solid orange;
+    box-shadow: 0 8px 16px rgba(255,165,0,0.4);
+    }
+
 }
