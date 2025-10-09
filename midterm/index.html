@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MoArt — Let the Light In</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+
+</head>
+<body>
+    <div class="bg-layer bg-dark"></div>
+    <div class="bg-layer bg-light"></div>
+
+    <header class="site-header">
+        
+        <div class="marquee-wrapper">
+            <p id="marquee" class="marquee-text" onmouseover="pauseMarquee()" onmouseout="resumeMarquee()" > 
+                Explore what's inside to understand what's outside, and discover the hidden colors of your mind. — Explore what's inside to understand what's outside, and discover the hidden colors of your mind. — Explore what's inside to understand what's outside, and discover the hidden colors of your mind. 
+            </p>
+        </div>
+        
+        <div class="header-inner">
+            <img src="assets/logo.gif" alt="MoArt logo" class="logo" />
+            <nav class="grid-nav">
+                <a class="nav-item" href="#home">Gallery</a>
+                <a class="nav-item" href="#about">About</a>
+                <a class="nav-item" href="#moods">Explore</a>
+                <a class="nav-item" href="#contact">Contact</a>
+            </nav>
+        </div>
+
+    </header>
+
+    <div id="page-wrapper">
+        <main>
+            <section id="about" class="split-box">
+                <div class="split-left">
+                    <h2 class="split-title">About this project</h2>
+                    <p class="split-paragraph"> 
+                    MoArt is a creative gallery exploring how colors and shapes influence human emotions. Each piece in our collection is not just an image, but a visual anchor for a specific feeling, inviting you to reflect and connect with the hidden colors of your mind. We believe that art is a mirror; the way you perceive a certain shade or form is a direct reflection of your inner landscape. This project is a journey through your own mood palette, designed to help you understand what's inside to navigate what's outside. Take a moment with each work, let its energy seep in, and discover the feeling it evokes in you.</p>
+                </div>
+                <div class="split-right">
+                    <img src="assets/main-feature-img.jpg" alt="Main feature" class="feature-img" /> 
+                    <div class="feature-overlay"></div>
+                </div>
+            </section>
+
+            <section id="home" class="gallery-section">
+                <h3 class="section-title">Our Best Pieces</h3> 
+                <div class="gallery-grid">
+                    <figure class="gallery-item"> 
+                        <img src="assets/mood-1.jpg" alt="Tranquility" class="gallery-img" /> 
+                        <figcaption>Tranquility</figcaption> 
+                    </figure>
+                    <figure class="gallery-item"> 
+                        <img src="assets/mood-2.jpg" alt="Freedom" class="gallery-img" /> 
+                        <figcaption>Freedom</figcaption> 
+                    </figure>
+                    <figure class="gallery-item"> 
+                        <img src="assets/mood-3.jpg" alt="Joy" class="gallery-img" /> 
+                        <figcaption>Joy</figcaption> 
+                    </figure>
+                    <figure class="gallery-item"> 
+                        <img src="assets/mood-4.jpg" alt="Mystery" class="gallery-img" /> 
+                        <figcaption>Mystery</figcaption> 
+                    </figure>
+                    <figure class="gallery-item"> 
+                        <img src="assets/mood-5.jpg" alt="Balance" class="gallery-img" /> 
+                        <figcaption>Balance</figcaption> 
+                    </figure>
+                </div>
+            </section>
+
+            <section id="moods" class="mood-section">
+                <div class="mood-panel">
+                    <h3 class="section-title">Explore moods</h3> 
+                    <div class="mood-controls">
+                        <button class="mood-btn active" data-mood="peace">Peace</button>
+                        <button class="mood-btn" data-mood="energy">Energy</button>
+                        <button class="mood-btn" data-mood="dream">Dream</button>
+                    </div>
+                    <div class="mood-image-wrap">
+                        <img id="mood-image" src="assets/mood-peace.jpg" alt="Mood image" /> 
+                        <div class="mood-image-overlay"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="toggle-section">
+                <div class="toggle-box">
+                    <p class="toggle-text">Don't be shy, let the light in</p> 
+                    <button id="theme-toggle" class="theme-toggle">Let it in</button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>© 2025 MoArt. Made with creativity</p>
+        </footer>
+    </div>
+</body>
+</html>
