@@ -29,15 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if(on){
             body.classList.add('light-mode');
             themeBtn.textContent = 'Keep it out';
-            if(mainFeatureImg) {
-                mainFeatureImg.src = 'assets/main-feature-light-img.jpg'; 
-            }
+            // Aquí no hacemos nada con mainFeatureImg porque el Slideshow ya maneja las imágenes.
+            // Si el Slideshow no carga, se muestra la imagen 'light' por defecto en el HTML,
+            // pero para esta versión, eliminamos el manejo de la imagen aquí.
         } else {
             body.classList.remove('light-mode');
             themeBtn.textContent = 'Let it in';
-            if(mainFeatureImg) {
-                mainFeatureImg.src = 'assets/main-feature-img.jpg'; 
-            }
         }
     }
 
@@ -65,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
 
             // 2. Lógica de cambio de imagen con fade-in
-            //if(moodMap[mood] && moodImage) {
+            //if(moodMap[mood] && moodImage) { // Dejamos tu lógica con el comentario para no romper el código original
                 moodImage.style.opacity = 0;
                 
                 setTimeout(()=> {
@@ -96,4 +93,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const im = new Image();
         im.src = src;
     });
+
+    // --- LÓGICA UIKIT NOTIFICATION ---
+    const subscribeBtn = document.getElementById('subscribe-btn');
+
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', () => {
+            
+            // Función para mostrar la notificación de UIkit
+            // NOTA: 'UIkit' está disponible porque hemos enlazado el JS de UIkit en el HTML.
+            UIkit.notification({
+                message: '<strong>Subscription Confirmed!</strong> You will now receive MoArt news.',
+                status: 'success', 
+                pos: 'bottom-right', 
+                timeout: 5000 
+            });
+        });
+    }
+
 });

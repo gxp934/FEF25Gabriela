@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>MoArt — Let the Light In</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.3/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="../midterm/css/style.css" />
     <script src="../midterm/js/script.js" defer></script>
 
@@ -34,41 +35,122 @@
 
     <div id="page-wrapper">
         <main>
-            <section id="about" class="split-box">
-                <div class="split-left">
-                    <h2 class="split-title">About this project</h2>
-                    <p class="split-paragraph"> 
-                    MoArt is a creative gallery exploring how colors and shapes influence human emotions. Each piece in our collection is not just an image, but a visual anchor for a specific feeling, inviting you to reflect and connect with the hidden colors of your mind. We believe that art is a mirror; the way you perceive a certain shade or form is a direct reflection of your inner landscape. This project is a journey through your own mood palette, designed to help you understand what's inside to navigate what's outside. Take a moment with each work, let its energy seep in, and discover the feeling it evokes in you.</p>
+            
+            <section id="about" class="uk-margin-medium-top">
+                
+                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; ratio: 7:3; animation: fade">
+
+                    <ul class="uk-slideshow-items">
+                        <li>
+                            <img src="assets/main-feature-img.jpg" alt="Main feature Dark" uk-cover>
+                            <div class="uk-position-center uk-position-small uk-text-center uk-padding-large">
+                                <h2 class="uk-margin-remove-bottom uk-text-large uk-text-bold">MoArt: Let the Light In</h2>
+                                <p class="uk-margin-small-top uk-text-lead uk-visible@m">Explore what's inside to understand what's outside.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="assets/main-feature-light-img.jpg" alt="Main feature Light" uk-cover>
+                            <div class="uk-position-center-left uk-position-medium uk-overlay uk-overlay-default">
+                                <h3 class="uk-margin-remove-bottom">Art is a Mirror</h3>
+                                <p>Discover the hidden colors of your mind.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="assets/mood-energy.jpg" alt="Energy" uk-cover>
+                            <div class="uk-position-bottom-right uk-position-medium uk-overlay uk-overlay-primary">
+                                <h3 class="uk-margin-remove-bottom">New Collection: Energy</h3>
+                                <p>Pieces that connect with your inner drive.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+                    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
                 </div>
-                <div class="split-right">
-                    <img src="assets/main-feature-img.jpg" alt="Main feature" class="feature-img" /> 
-                    <div class="feature-overlay"></div>
+                <div class="uk-card uk-card-body uk-card-small uk-card-default uk-margin-top uk-text-center uk-visible@m">
+                    <p class="uk-margin-remove-bottom">MoArt is a creative gallery exploring how colors and shapes influence human emotions. Take a moment, let its energy seep in, and discover the feeling it evokes in you.</p>
                 </div>
+
             </section>
 
-            <section id="home" class="gallery-section">
-                <h3 class="section-title">Our Best Pieces</h3> 
-                <div class="gallery-grid">
-                    <figure class="gallery-item"> 
-                        <img src="assets/mood-1.jpg" alt="Tranquility" class="gallery-img" /> 
-                        <figcaption>Tranquility</figcaption> 
-                    </figure>
-                    <figure class="gallery-item"> 
-                        <img src="assets/mood-2.jpg" alt="Freedom" class="gallery-img" /> 
-                        <figcaption>Freedom</figcaption> 
-                    </figure>
-                    <figure class="gallery-item"> 
-                        <img src="assets/mood-3.jpg" alt="Joy" class="gallery-img" /> 
-                        <figcaption>Joy</figcaption> 
-                    </figure>
-                    <figure class="gallery-item"> 
-                        <img src="assets/mood-4.jpg" alt="Mystery" class="gallery-img" /> 
-                        <figcaption>Mystery</figcaption> 
-                    </figure>
-                    <figure class="gallery-item"> 
-                        <img src="assets/mood-5.jpg" alt="Balance" class="gallery-img" /> 
-                        <figcaption>Balance</figcaption> 
-                    </figure>
+            <section id="home" class="gallery-section uk-margin-large-top">
+                <h3 class="section-title">Our Best Pieces (UIkit Gallery)</h3> 
+                
+                <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-5@l uk-grid-match uk-grid-small" uk-grid uk-lightbox="animation: scale">
+                    
+                    <div>
+                        <a href="assets/mood-1.jpg" data-caption="Tranquility - Acrylic on Canvas" class="uk-link-reset">
+                            <div class="uk-card uk-card-default uk-card-hover uk-border-rounded">
+                                <div class="uk-card-media-top">
+                                    <img src="assets/mood-1.jpg" alt="Tranquility" class="gallery-img">
+                                </div>
+                                <div class="uk-card-body uk-padding-small uk-text-center">
+                                    <h4 class="uk-card-title uk-margin-remove-bottom uk-text-small uk-text-bold">Tranquility</h4>
+                                    <p class="uk-text-meta uk-margin-remove-top">2024 Collection</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <a href="assets/mood-2.jpg" data-caption="Freedom - Digital Art" class="uk-link-reset">
+                            <div class="uk-card uk-card-default uk-card-hover uk-border-rounded">
+                                <div class="uk-card-media-top">
+                                    <img src="assets/mood-2.jpg" alt="Freedom" class="gallery-img">
+                                </div>
+                                <div class="uk-card-body uk-padding-small uk-text-center">
+                                    <h4 class="uk-card-title uk-margin-remove-bottom uk-text-small uk-text-bold">Freedom</h4>
+                                    <p class="uk-text-meta uk-margin-remove-top">Featured Piece</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="assets/mood-3.jpg" data-caption="Joy - Oil on Wood" class="uk-link-reset">
+                            <div class="uk-card uk-card-default uk-card-hover uk-border-rounded">
+                                <div class="uk-card-media-top">
+                                    <img src="assets/mood-3.jpg" alt="Joy" class="gallery-img">
+                                </div>
+                                <div class="uk-card-body uk-padding-small uk-text-center">
+                                    <h4 class="uk-card-title uk-margin-remove-bottom uk-text-small uk-text-bold">Joy</h4>
+                                    <p class="uk-text-meta uk-margin-remove-top">The Core</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <a href="assets/mood-4.jpg" data-caption="Mystery - Abstract" class="uk-link-reset">
+                            <div class="uk-card uk-card-default uk-card-hover uk-border-rounded">
+                                <div class="uk-card-media-top">
+                                    <img src="assets/mood-4.jpg" alt="Mystery" class="gallery-img">
+                                </div>
+                                <div class="uk-card-body uk-padding-small uk-text-center">
+                                    <h4 class="uk-card-title uk-margin-remove-bottom uk-text-small uk-text-bold">Mystery</h4>
+                                    <p class="uk-text-meta uk-margin-remove-top">Hidden</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <a href="assets/mood-5.jpg" data-caption="Balance - Minimalist" class="uk-link-reset">
+                            <div class="uk-card uk-card-default uk-card-hover uk-border-rounded">
+                                <div class="uk-card-media-top">
+                                    <img src="assets/mood-5.jpg" alt="Balance" class="gallery-img">
+                                </div>
+                                <div class="uk-card-body uk-padding-small uk-text-center">
+                                    <h4 class="uk-card-title uk-margin-remove-bottom uk-text-small uk-text-bold">Balance</h4>
+                                    <p class="uk-text-meta uk-margin-remove-top">Harmony</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
             </section>
 
@@ -92,11 +174,21 @@
                     <p class="toggle-text">Don't be shy, let the light in</p> 
                     <button id="theme-toggle" class="theme-toggle">Let it in</button>
                 </div>
+                
+                <div class="uk-text-center uk-margin-large-top">
+                    <p class="uk-margin-small-bottom uk-text-small uk-text-muted">Stay up-to-date with new art and collections.</p>
+                    <button id="subscribe-btn" class="uk-button uk-button-primary uk-button-large">
+                        Suscribe for more info
+                    </button>
+                </div>
+                
             </section>
         </main>
         <footer>
             <p>© 2025 MoArt. Made with creativity</p>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.3/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>

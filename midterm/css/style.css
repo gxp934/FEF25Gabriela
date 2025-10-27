@@ -138,14 +138,14 @@ body.light-mode .bg-light{
     display:inline-block; 
     animation: marquee 20s linear infinite; 
     font-weight:600; 
-    font-size:1.5rem; /* <--- Solo cambia este valor */
+    font-size:1.5rem; 
     color: rgba(255,255,255,0.9); 
     will-change: transform; 
 } 
 
 @keyframes marquee { 
     0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } /* Mover solo la mitad (o el 50%) si el texto está duplicado */
+    100% { transform: translateX(-50%); } 
 } 
 
 
@@ -218,13 +218,14 @@ body.light-mode .bg-light{
 .gallery-grid{ 
   display:grid; 
   grid-template-columns: repeat(5, 1fr); 
-  gap:16px; }
+  gap:16px; 
+}
 .gallery-item{ 
   position:relative; 
   text-align:center; 
   transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease; 
   cursor: pointer;
- } 
+} 
 .gallery-img{ 
   width:100%; 
   height:150px; 
@@ -260,7 +261,7 @@ body.light-mode .bg-light{
     border-radius:18px; 
     padding:28px; 
     border:2px solid rgba(255,255,255,0.25); 
-    background: var(--mood-bg-dark); /* CORRECCIÓN: Usa variable para el fondo */
+    background: var(--mood-bg-dark); 
     text-align:center;
     transition: background var(--transition-med) ease;
 }
@@ -269,7 +270,8 @@ body.light-mode .bg-light{
   display:flex; 
   justify-content:center; 
   gap:14px; 
-  margin-bottom:18px; } 
+  margin-bottom:18px; 
+} 
 .mood-btn{ 
     background:transparent; 
     color:#fff; 
@@ -319,7 +321,7 @@ body.light-mode .bg-light{
     padding:20px; 
     border-radius:12px; 
     text-align:center; 
-    transition: background var(--transition-med) ease; /* CORRECCIÓN: Aplicar transición */
+    transition: background var(--transition-med) ease;
 } 
 
 .toggle-text{ 
@@ -346,7 +348,8 @@ body.light-mode .bg-light{
 footer{ 
   text-align:center; 
   padding:30px 0 30px; 
-  color:rgba(255,255,255,0.7); } 
+  color:rgba(255,255,255,0.7); 
+} 
 
 
 /*LIGHT MODE OVERRIDES */
@@ -394,7 +397,6 @@ body.light-mode .site-header{ background: linear-gradient(rgba(255,255,255,0.55)
 body.light-mode .theme-toggle{ background:#000; color:#fff; } 
 
 
-
 @media (max-width: 1000px){ 
     .gallery-grid{ 
       grid-template-columns: repeat(3, 1fr);
@@ -422,4 +424,54 @@ body.light-mode .theme-toggle{ background:#000; color:#fff; }
     .nav-item{ min-width:70px; padding:8px 12px; } 
     .marquee-text{ font-size:0.9rem; animation-duration:24s; } 
     .header-inner{ padding:12px 0; } 
+} 
+
+/* --- AJUSTES PARA INTEGRACIÓN UIKIT --- */
+
+/* Ajuste de título para el Slideshow (ya que usa un H2) */
+#about .uk-text-large {
+    font-family: "Instrument Serif", serif !important;
+    font-weight: 400 !important; 
+    color: var(--title-color-dark) !important; 
+    transition: color var(--transition-med) ease;
+}
+
+/* Light Mode para el Slideshow */
+body.light-mode #about .uk-text-large {
+    color: var(--title-color-light) !important;
+}
+
+/* Ajuste para que las tarjetas de la galería se vean bien en Light Mode */
+body.light-mode .uk-card-default {
+    background: var(--box-bg-light); 
+    border: 1px solid rgba(0,0,0,0.1); 
+    color: var(--text-color-light); 
+}
+
+/* Las imágenes en las tarjetas deben mantener el tamaño de tu diseño original */
+#home .gallery-img { 
+  width:100%; 
+  height:150px; 
+  object-fit:cover; 
+  border-top-left-radius:6px; 
+  border-top-right-radius:6px; 
+  display:block; 
+}
+/* Evitar que UIkit aplique su propio borde de redondeo para que figuren tus estilos */
+.uk-card {
+    border-radius: 6px;
+}
+
+/* --- CORRECCIÓN UIKIT SLIDESHOW OVERLAY (Para solucionar el fondo blanco) --- */
+.uk-overlay-default {
+    /* Fondo semitransparente oscuro para el modo oscuro */
+    background-color: rgba(0, 0, 0, 0.4) !important; 
+    color: #fff !important; /* Texto blanco en modo oscuro */
+    padding: 20px !important; 
+}
+
+/* Estilo para el overlay en el modo claro */
+body.light-mode .uk-overlay-default {
+    background-color: rgba(255, 255, 255, 0.6) !important; /* Fondo semitransparente claro */
+    color: #111 !important; /* Texto oscuro en modo claro */
 }
