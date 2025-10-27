@@ -11,7 +11,7 @@
     --transition: 0.3s ease;
 }
 
-/* Global Styles */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: var(--bg-dark);
@@ -43,7 +43,7 @@ body {
     padding-bottom: 10px;
 }
 
-/* Question Area */
+
 #question-area {
     margin-bottom: 25px;
     text-align: left;
@@ -56,7 +56,7 @@ body {
     color: var(--text-light);
 }
 
-/* Options Form (Custom Grid Layout) */
+
 .options-grid {
     display: grid;
     grid-template-columns: 1fr; /* Una columna por defecto */
@@ -85,7 +85,7 @@ body {
 }
 
 
-/* Buttons */
+
 #submit, #next-btn, #restart-btn {
     padding: 12px 25px;
     margin-top: 20px;
@@ -113,7 +113,7 @@ body {
     background-color: #5a6268;
 }
 
-/* Result Area */
+
 #result {
     margin-top: 20px;
     padding: 15px;
