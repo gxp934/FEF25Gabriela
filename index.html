@@ -3,9 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SitBuddy BLE Test</title>
+  <title>SitBuddy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
   <script src="https://unpkg.com/p5ble@0.0.7/dist/p5.ble.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #FEFEFE;
+      overflow: hidden;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    button {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      padding: 14px 16px;
+      border: none;
+      border-radius: 14px;
+      background: #111111;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+  </style>
 </head>
 <body>
   <script>
@@ -14,22 +50,41 @@
 
     let myBLE;
     let txChar;
+
+    let goodImg, warningImg, slouchImg;
+
     let postureState = "not connected";
+    let pendingState = "not connected";
+    let pendingSince = 0;
+
+    let breath = 0;
+
+    function preload() {
+      goodImg = loadImage("good.png");
+      warningImg = loadImage("warning.png");
+      slouchImg = loadImage("slouch.png");
+    }
 
     function setup() {
-      createCanvas(500, 300);
+      createCanvas(windowWidth, windowHeight);
+      imageMode(CENTER);
+      textAlign(CENTER, CENTER);
+      noSmooth();
+
       myBLE = new p5ble();
 
-      let btn = createButton('Connect SitBuddy');
-      btn.position(20, 20);
-      btn.mousePressed(() => {
-        myBLE.connect(NUS_SERVICE, gotCharacteristics);
-      });
+      let btn = createButton("CONNECT");
+      btn.mousePressed(connectBLE);
+    }
+
+    function connectBLE() {
+      myBLE.connect(NUS_SERVICE, gotCharacteristics);
     }
 
     function gotCharacteristics(error, characteristics) {
       if (error) {
         console.error(error);
+        postureState = "connection error";
         return;
       }
 
@@ -41,39 +96,91 @@
       }
 
       if (txChar) {
-        myBLE.startNotifications(txChar, handleData, 'string');
+        postureState = "connected";
+        myBLE.startNotifications(txChar, handleData, "string");
       }
     }
 
     function handleData(data) {
-      postureState = data.trim();
-      console.log("Received:", postureState);
+      let incoming = data.trim();
+
+      if (
+        incoming !== "good" &&
+        incoming !== "warning" &&
+        incoming !== "slouch"
+      ) {
+        return;
+      }
+
+      if (incoming !== pendingState) {
+        pendingState = incoming;
+        pendingSince = millis();
+      }
+
+      if (millis() - pendingSince > 250) {
+        postureState = pendingState;
+      }
     }
 
     function draw() {
-      background(245);
+      background("#FEFEFE");
+      drawBuddy();
+      drawStatus();
+      drawTitle();
+    }
 
-      textSize(20);
-      fill(0);
-      text("SitBuddy BLE Test", 20, 80);
+    function drawTitle() {
+      fill(25);
+      noStroke();
+      textSize(18);
+      text("SITBUDDY", width / 2, 60);
+    }
 
-      textSize(28);
-      fill(50);
-      text("State: " + postureState, 20, 150);
+    function drawStatus() {
+      textSize(10);
 
       if (postureState === "good") {
-        fill("green");
-        ellipse(420, 150, 80, 80);
+        fill("#2E7D32");
+        text("GOOD POSTURE", width / 2, height - 70);
       } else if (postureState === "warning") {
-        fill("orange");
-        ellipse(420, 150, 80, 80);
+        fill("#B26A00");
+        text("WARNING", width / 2, height - 70);
       } else if (postureState === "slouch") {
-        fill("red");
-        ellipse(420, 150, 80, 80);
+        fill("#B23A3A");
+        text("SLOUCHING", width / 2, height - 70);
+      } else if (postureState === "connected") {
+        fill(90);
+        text("CONNECTED", width / 2, height - 70);
+      } else if (postureState === "connection error") {
+        fill("#B23A3A");
+        text("CONNECTION ERROR", width / 2, height - 70);
       } else {
-        fill("gray");
-        ellipse(420, 150, 80, 80);
+        fill(120);
+        text("NOT CONNECTED", width / 2, height - 70);
       }
+    }
+
+    function drawBuddy() {
+      let x = width / 2;
+      let y = height / 2 + 10;
+      let size = min(width, height) * 0.38;
+
+      breath += 0.05;
+
+      if (postureState === "good") {
+        let offset = sin(breath) * 4;
+        image(goodImg, x, y + offset, size, size);
+      } else if (postureState === "warning") {
+        image(warningImg, x, y, size, size);
+      } else if (postureState === "slouch") {
+        image(slouchImg, x, y, size, size);
+      } else {
+        image(goodImg, x, y, size, size);
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
     }
   </script>
 </body>
