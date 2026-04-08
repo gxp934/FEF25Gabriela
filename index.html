@@ -2,56 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SitBuddy</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 20px;
-      background: #ffffff;
-      font-family: monospace;
-    }
-
-    #buddy {
-      width: 220px;
-      image-rendering: pixelated;
-    }
-
-    #label {
-      font-size: 24px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SitBuddy BLE Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+  <script src="https://unpkg.com/p5ble@0.0.7/dist/p5.ble.js"></script>
 </head>
 <body>
-  <img id="buddy" src="good.png" alt="SitBuddy">
-  <div id="label">GOOD</div>
-
   <script>
-    function setState(state) {
-      const buddy = document.getElementById("buddy");
-      const label = document.getElementById("label");
+    const NUS_SERVICE = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+    const NUS_TX = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
-      if (state === "good") {
-        buddy.src = "good.png";
-        label.textContent = "GOOD";
-      } else if (state === "warning") {
-        buddy.src = "warning.png";
-        label.textContent = "WARNING";
-      } else if (state === "slouch") {
-        buddy.src = "slouch.png";
-        label.textContent = "SLOUCH";
+    let myBLE;
+    let txChar;
+    let postureState = "not connected";
+
+    function setup() {
+      createCanvas(500, 300);
+      myBLE = new p5ble();
+
+      let btn = createButton('Connect SitBuddy');
+      btn.position(20, 20);
+      btn.mousePressed(() => {
+        myBLE.connect(NUS_SERVICE, gotCharacteristics);
+      });
+    }
+
+    function gotCharacteristics(error, characteristics) {
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      for (let c of characteristics) {
+        const uuid = c.uuid.toLowerCase();
+        if (uuid === NUS_TX) {
+          txChar = c;
+        }
+      }
+
+      if (txChar) {
+        myBLE.startNotifications(txChar, handleData, 'string');
       }
     }
 
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "1") setState("good");
-      if (e.key === "2") setState("warning");
-      if (e.key === "3") setState("slouch");
-    });
+    function handleData(data) {
+      postureState = data.trim();
+      console.log("Received:", postureState);
+    }
+
+    function draw() {
+      background(245);
+
+      textSize(20);
+      fill(0);
+      text("SitBuddy BLE Test", 20, 80);
+
+      textSize(28);
+      fill(50);
+      text("State: " + postureState, 20, 150);
+
+      if (postureState === "good") {
+        fill("green");
+        ellipse(420, 150, 80, 80);
+      } else if (postureState === "warning") {
+        fill("orange");
+        ellipse(420, 150, 80, 80);
+      } else if (postureState === "slouch") {
+        fill("red");
+        ellipse(420, 150, 80, 80);
+      } else {
+        fill("gray");
+        ellipse(420, 150, 80, 80);
+      }
+    }
   </script>
 </body>
 </html>
