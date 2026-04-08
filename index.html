@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SitBuddy</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      background: #ffffff;
+      font-family: monospace;
+    }
+
+    #buddy {
+      width: 220px;
+      image-rendering: pixelated;
+    }
+
+    #label {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <img id="buddy" src="good.png" alt="SitBuddy">
+  <div id="label">GOOD</div>
+
+  <script>
+    function setState(state) {
+      const buddy = document.getElementById("buddy");
+      const label = document.getElementById("label");
+
+      if (state === "good") {
+        buddy.src = "good.png";
+        label.textContent = "GOOD";
+      } else if (state === "warning") {
+        buddy.src = "warning.png";
+        label.textContent = "WARNING";
+      } else if (state === "slouch") {
+        buddy.src = "slouch.png";
+        label.textContent = "SLOUCH";
+      }
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "1") setState("good");
+      if (e.key === "2") setState("warning");
+      if (e.key === "3") setState("slouch");
+    });
+  </script>
+</body>
+</html>
